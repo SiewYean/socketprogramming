@@ -22,18 +22,28 @@ void *Child_Fn(void *arg) {
 }
 
 int main() {
-	struct argstruct arg;
+	struct argstruct arg,arg2;
 	arg.id = 1;
 	strcpy(arg.name, "apple");
+	
+	arg2.id = 2;
+	strcpy(arg2.name, "ball");
 
-       	pthread_t tchild;
+       	pthread_t tchild, tchild2;
 	
 	// NULL is attr: what resources is shared with parent
 	if (pthread_create(&tchild, NULL, &Child_Fn, &arg) != 0) {
 		perror("Failed to create thread");
 	}
 
+
+	if (pthread_create(&tchild2, NULL, &Child_Fn, &arg2) != 0) {
+		perror("Failed to create thread2");
+	}
+
+	
 	pthread_join(tchild, NULL);
+	pthread_join(tchild2,NULL);
 
  	return 0;
 }
