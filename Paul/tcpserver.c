@@ -19,6 +19,11 @@ main()
 	char buf[BUFSIZE];
 	
 	sd = socket(PF_INET, SOCK_STREAM, 0);
+
+	int one = 1; 
+	// SOL_SOCKET = socket options, one = 1 means enable
+	setsockopt(sd, SOL_SOCKET, SO_REUSEADDR | SO_REUSEPORT, &one, sizeof(one));
+
 	memset(&addr,0,sizeof(addr));
 	addr.sin_family = AF_INET;
 	addr.sin_port = htons(33333);
