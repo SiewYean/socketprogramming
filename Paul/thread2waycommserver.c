@@ -16,6 +16,7 @@ void* Receiver(void *arg){
 		printf("%s", buf);
 		if(strstr(buf,"quit") != NULL){
 			printf("..quitting..\n");
+			exit(0);
 		}
 	}while(numbytes>0);
 

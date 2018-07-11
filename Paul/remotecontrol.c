@@ -16,7 +16,17 @@ void* Receiver(void *arg){
 		printf("%s", buf);
 		if(strstr(buf,"quit") != NULL){
 			printf("..quitting..\n");
-		}
+		} 
+
+		if(strstr(buf,"sayhello") != NULL){
+			memset(buf,0,BUFSIZE);
+			printf("..HELLO..\n");
+		} 
+
+		if(strstr(buf,"saygoodbye") != NULL){
+			memset(buf,0,BUFSIZE);
+			printf("..GOOD BYE..\n");
+		} 
 	}while(numbytes>0);
 
 	return 0;
